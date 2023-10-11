@@ -32,8 +32,8 @@ dependencies:
     specifier: ^7.0.0
     version: 7.0.0(typescript@5.0.4)
   '@syftdata/next':
-    specifier: 0.1.38-alpha.3
-    version: 0.1.38-alpha.3(ajv@8.12.0)(asn1.js@5.4.1)
+    specifier: 0.1.38-alpha.6
+    version: 0.1.38-alpha.6(ajv@8.12.0)(asn1.js@5.4.1)
   contentlayer:
     specifier: ^0.3.2
     version: 0.3.2(esbuild@0.19.4)
@@ -5264,8 +5264,8 @@ packages:
       node-emoji: 1.11.0
     dev: false
 
-  /@syftdata/next@0.1.38-alpha.3(ajv@8.12.0)(asn1.js@5.4.1):
-    resolution: {integrity: sha512-t/kAD5WelC8TWSA1dGfkdk9QK1y8gJjx8vgykCxfk+A5pjb2b1vO5uzxEKZsKqUeuSIwJndqF0ZRHo0BlZ/GIg==}
+  /@syftdata/next@0.1.38-alpha.6(ajv@8.12.0)(asn1.js@5.4.1):
+    resolution: {integrity: sha512-2kDprpF9svgNaj4u3u4IbefRlbVqW9odnP1eyaPkNd9cKisli+CArjINETkWKkJU0s4BrkPmb36mWj3qzugypA==}
     dependencies:
       '@segment/actions-core': 3.83.0
       '@syftdata/action-destinations': 3.205.11(ajv@8.12.0)(asn1.js@5.4.1)
