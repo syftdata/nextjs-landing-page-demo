@@ -11,27 +11,30 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { announcement, header, footer } = pageProps;
 
   return (
-    <SyftProvider
-      trackPageViews
-      trackOutboundLinks
-      consent={false}
-      autocapture={{
-        schemas: [],
-        tags: [],
-      }}
-    >
-      <SaasProvider theme={theme}>
-        <AuthProvider>
-          <Layout
-            announcementProps={announcement}
-            headerProps={header}
-            footerProps={footer}
-          >
-            <Component {...pageProps} />
-          </Layout>
-        </AuthProvider>
-      </SaasProvider>
-    </SyftProvider>
+    <SaasProvider theme={theme}>
+      <AuthProvider
+        onSignup={(auth) => {
+          return Promise.resolve({
+            id: "121",
+            name: "test",
+          });
+        }}
+        onLogin={(auth) => {
+          return Promise.resolve({
+            id: "123",
+            name: "test2",
+          });
+        }}
+      >
+        <Layout
+          announcementProps={announcement}
+          headerProps={header}
+          footerProps={footer}
+        >
+          <Component {...pageProps} />
+        </Layout>
+      </AuthProvider>
+    </SaasProvider>
   );
 }
 
