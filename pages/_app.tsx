@@ -16,6 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       trackOutboundLinks
       consent={false}
       autocapture={{
+        toolbarJS: "https://cdn.syftdata.com/syftbar/0.0.1/syftbar.es.js",
         schemas: [],
         tags: [],
       }}
