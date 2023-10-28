@@ -5,7 +5,6 @@ import { SaasProvider } from "@saas-ui/react";
 import { Layout } from "components/layout";
 
 import theme from "../theme";
-import { SyftProvider } from "@syftdata/next";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { announcement, header, footer } = pageProps;

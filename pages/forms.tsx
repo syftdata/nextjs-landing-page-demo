@@ -6,7 +6,6 @@ import { useEffect } from "react";
 
 declare global {
   interface Window {
-    hbspt: any;
     syft: any;
   }
 }
@@ -92,23 +91,15 @@ function GroupedFields() {
 
 const Forms: NextPage = () => {
   useEffect(() => {
-    window.hbspt.forms.create({
-      region: "na1",
-      portalId: "43753372",
-      formId: "4b01d3c3-2b36-4456-bd55-f1af1b5d8e01",
-      target: "#hubspot-form",
-    });
     // also fire identify call.
-    window.syft.identify("nageshwara@gmail.com", {
-      email: "nageshwara@gmail.com",
-      gender: "Male",
+    window.syft.identify("nageswara@syftdata.com", {
+      email: "nageswara@syftdata.com",
     });
   }, []);
   return (
     <Box position="relative" overflow="hidden">
       <Container maxW="container.xl" pt={{ base: 40, lg: 60 }} pb="40">
         <VStack spacing="24px">
-          <div id="hubspot-form"></div>
           <SimpleForm />
           <GroupedFields />
         </VStack>

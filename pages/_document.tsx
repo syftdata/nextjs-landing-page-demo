@@ -29,7 +29,7 @@ export default class Document extends NextDocument {
             dangerouslySetInnerHTML={{
               __html: `
             (function (p) {
-              window.syftc = p || {};
+              window.syftc = p || {sourceId: "test_key"};
               if (window.syft) return;
               window.syft = [];
               ['identify', 'track', 'page'].forEach(function (t) {
@@ -41,17 +41,18 @@ export default class Document extends NextDocument {
               });
               const n = document.createElement('script');
               n.async = true;
-              n.setAttribute('src', 'http://localhost:4173/syft.es.js');
+              n.setAttribute('src', 'https://cdn.syftdata.com/syftnext/syft.es.js');
               (document.body || document.head).appendChild(n);
             })();            
             `,
             }}
           />
           <script
-            async={true}
-            charSet="utf-8"
             type="text/javascript"
-            src="//js.hsforms.net/forms/embed/v2.js"
+            id="hs-script-loader"
+            async
+            defer
+            src="//js.hs-scripts.com/43753372.js"
           />
         </Head>
         <body>
