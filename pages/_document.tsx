@@ -1,5 +1,5 @@
 import { ColorModeScript } from "@chakra-ui/react";
-import NextDocument, { Html, Head, Main, NextScript } from "next/document";
+import NextDocument, { Head, Html, Main, NextScript } from "next/document";
 import theme from "../theme";
 
 export default class Document extends NextDocument {
@@ -27,24 +27,7 @@ export default class Document extends NextDocument {
           <link rel="manifest" href="/static/favicons/manifest.json" />
           <script
             dangerouslySetInnerHTML={{
-              __html: `
-            (function (p) {
-              window.syftc = p || {sourceId: "test_key"};
-              if (window.syft) return;
-              window.syft = [];
-              ['identify', 'track', 'page'].forEach(function (t) {
-                window.syft[t] = function () {
-                  const n = [].slice.call(arguments);
-                  n.unshift(t);
-                  window.syft.push(n);
-                };
-              });
-              const n = document.createElement('script');
-              n.async = true;
-              n.setAttribute('src', 'https://cdn.syftdata.com/syftnext/syft.es.js');
-              (document.body || document.head).appendChild(n);
-            })();            
-            `,
+              __html: `!function(t){if(window.syftc=t,window.syft)return;window.syft=[],["identify","track","page"].forEach(function(t){window.syft[t]=function(){var s=[].slice.call(arguments);s.unshift(t),window.syft.push(s)}});var s=document.createElement("script");s.async=!0,s.setAttribute("src","http://localhost:4173/syft.umd.js"),(document.body||document.head).appendChild(s)}({sourceId:"test"});`,
             }}
           />
           <script
