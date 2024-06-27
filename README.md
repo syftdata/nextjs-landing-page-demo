@@ -10,7 +10,7 @@ To start the app run:
 pnpm dev
 ```
 
-Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
+Open [http://localhost:3002](http://localhost:3002) with your browser to see the result.
 
 Check your Chrome developer tools network tab. The app should be posting events to http://localhost:3000/api/syft
 
