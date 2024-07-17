@@ -1,5 +1,7 @@
 # Saas UI - Next.js - landing page.
 
+![This is the Syft Pixel](https://event.syftdata.com/svg?key=test)
+
 ## Getting Started
 
 First, clone this repo and run `pnpm i`
