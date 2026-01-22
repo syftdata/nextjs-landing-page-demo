@@ -1,4 +1,3 @@
-import type { AppProps } from "next/app";
 
 import { AuthProvider } from "@saas-ui/auth";
 import { SaasProvider } from "@saas-ui/react";
@@ -6,8 +5,16 @@ import { Layout } from "components/layout";
 
 import theme from "../theme";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
   const { announcement, header, footer } = pageProps;
+  if (Component.getLayout) {
+    return Component.getLayout(
+      <Component {...pageProps} />,
+      announcement,
+      header,
+      footer
+    );
+  }
 
   return (
     <SaasProvider theme={theme}>

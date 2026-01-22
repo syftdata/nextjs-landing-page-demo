@@ -28,6 +28,7 @@ export const Layout: React.FC<LayoutProps> = (props) => {
         <SkipNavContent />
         {children}
       </Box>
+      <div id="icp-container" className="hidden" />
       <Footer {...footerProps} />
     </Box>
   )
