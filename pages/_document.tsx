@@ -4,6 +4,8 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document(a) {
     const includeSyft = a.dangerousAsPath !== "/forms2";
+    // ?deferred=1 loads the tag with tracking off, as sites with their own consent banner do; call syft.enable() to start it.
+    const deferSyft = /[?&]deferred=1(&|$)/.test(a.dangerousAsPath ?? "");
     return (
       <Html lang="en">
         <Head>
@@ -25,7 +27,21 @@ export default function Document(a) {
             href="/static/favicons/favicon-16x16.png"
           />
           <link rel="manifest" href="/static/favicons/manifest.json" />
-          <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `Object.defineProperty(navigator, "globalPrivacyControl", { value: true, configurable: true });`}} />
+          {/* Simulates Global Privacy Control only when the URL has ?gpc=1, so GPC and normal tracking can both be tested. */}
+          <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `if (new URLSearchParams(location.search).get("gpc") === "1") Object.defineProperty(navigator, "globalPrivacyControl", { value: true, configurable: true });`}} />
+          {/* LinkedIn Insight Tag (partner ID from marketing-website's GTM container). Loaded directly
+              rather than via GTM, because that container also loads the production Syft tag. */}
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `_linkedin_partner_id = "7015244";
+window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+(function(l) { if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])}; window.lintrk.q=[];}
+var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script");
+b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);`,
+            }}
+          />
           {includeSyft &&
           <script
           id="syft-loader"
@@ -34,6 +50,7 @@ export default function Document(a) {
           defer
           src="http://localhost:4173/syft.umd.js"
           data-api-key="test"
+          data-enabled={deferSyft ? "false" : undefined}
           />}
           <script
           dangerouslySetInnerHTML={{
