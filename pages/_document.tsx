@@ -25,7 +25,8 @@ export default function Document(a) {
             href="/static/favicons/favicon-16x16.png"
           />
           <link rel="manifest" href="/static/favicons/manifest.json" />
-          {includeSyft && 
+          <script type="text/javascript" dangerouslySetInnerHTML={{ __html: `Object.defineProperty(navigator, "globalPrivacyControl", { value: true, configurable: true });`}} />
+          {includeSyft &&
           <script
           id="syft-loader"
           type="text/javascript"
